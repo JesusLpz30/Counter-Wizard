@@ -49,3 +49,12 @@ Para mejorar la experiencia y el compromiso del usuario, la app incluirá:
 *   El avatar **evoluciona y se hace más fuerte o débil** basado en acciones financieras positivas (ahorrar, pagar deudas) o negativas (endeudarse, retirar ahorros).
 *   El ritmo de progreso hacia las metas también influye en la apariencia del avatar (ej: un aura de poder si vas adelantado).
 
+## 5. Concepto Visual y Temática
+
+La interfaz de la aplicación seguirá un concepto visual claro y coherente:
+*   **Tema Principal:** Un "modo oscuro" por defecto, con fondos de color carbón oscuro o azul marino profundo para dar una sensación elegante y moderna.
+*   **Paleta de Colores:**
+    *   **Morados:** Se usarán para acciones primarias, botones importantes, y elementos "mágicos", reforzando la temática del "Wizard".
+    *   **Verdes:** Se usarán para cifras positivas: ingresos, ahorros, dinero a tu favor. Simbolizan crecimiento y finanzas.
+    *   **Rojos/Naranjas:** Se usarán para cifras negativas: deudas, gastos, dinero que debes, para una clara identificación visual.
+*   **Lenguaje Temático:** Se utilizará un lenguaje inspirado en la magia para funciones clave (ej: "Ritual de Reconciliación", "Fuga Etérea") para hacer la experiencia más divertida y memorable.
