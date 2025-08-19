@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Estilo Final - Counter Wizard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        :root {
+            --primary: #BB86FC; --success: #4CAF50; --danger: #D50000; --warning: #FFC107;
+            --border-radius-medium: 8px;
+            --transition-speed: 0.2s ease;
+            --font-header: 'Poppins', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+        body[data-theme='dark'] { --bg-primary: #121212; --bg-surface: #1E1E1E; --text-primary: #F0F0F0; --text-secondary: #B3B3B3; --shadow-color: rgba(0,0,0,0.3); --border-color: transparent; }
+        body[data-theme='light'] { --bg-primary: #FFFFFF; --bg-surface: #FFFFFF; --text-primary: #121212; --text-secondary: #6c757d; --shadow-color: rgba(0,0,0,0.1); --border-color: #E0E0E0; }
+
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); margin: 0; padding: 2rem; transition: background-color var(--transition-speed), color var(--transition-speed); }
+        .container { max-width: 900px; margin: auto; }
+        hr { border: none; border-top: 1px solid var(--border-color); margin: 2rem 0; transition: border-color var(--transition-speed); }
+        .grid { display:flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; }
+        h1, h2, h3, h4 { font-family: var(--font-header); color: var(--primary); }
+        p { line-height: 1.6; }
+        .secondary-text { color: var(--text-secondary); }
+        .card { background-color: var(--bg-surface); border-radius: var(--border-radius-medium); padding: 1.5rem; color: var(--text-primary); transition: all var(--transition-speed); border: 1px solid var(--border-color); box-shadow: 0 4px 8px var(--shadow-color); }
+        .button { border: none; padding: 12px 20px; border-radius: var(--border-radius-medium); font-family: var(--font-header); font-size: 16px; cursor: pointer; transition: all var(--transition-speed); }
+        .button-primary { background-color: var(--primary); color: #121212; }
+        .button-primary:hover { filter: brightness(1.2); }
+        .button-secondary { background-color: transparent; color: var(--primary); border: 2px solid var(--primary); }
+        .button-secondary:hover { background-color: var(--primary); color: #121212; }
+        .form-group { margin-top: 1rem; }
+        .form-group label { font-family: var(--font-header); color: var(--text-secondary); display: block; margin-bottom: 0.5rem; }
+        .form-group input[type="text"] { background-color: var(--bg-primary); border: 2px solid var(--border-color); border-radius: var(--border-radius-medium); padding: 12px; color: var(--text-primary); font-size: 1rem; width: calc(100% - 28px); transition: all var(--transition-speed); }
+        .form-group input[type="text"]:focus { border-color: var(--primary); outline: none; }
+        .alert { padding: 1rem; border-radius: var(--border-radius-medium); border-left: 5px solid; margin-top: 1rem; background-color: var(--bg-surface); border-right: 1px solid var(--border-color); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .alert-success { border-left-color: var(--success); }
+        .alert-danger { border-left-color: var(--danger); }
+        .alert-warning { border-left-color: var(--warning); }
+        .pie-chart { width: 150px; height: 150px; border-radius: 50%; background-image: conic-gradient(var(--success) 0 40%, var(--primary) 40% 75%, var(--warning) 75% 100%); }
+        .tabs { display: flex; border-bottom: 2px solid var(--border-color); }
+        .tab { padding: 1rem; cursor: pointer; color: var(--text-secondary); }
+        .tab.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
+        .avatar { width: 50px; height: 50px; border-radius: 50%; background-color: var(--primary); color: #121212; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-header); }
+        .theme-switch-wrapper { position: fixed; top: 20px; right: 20px; z-index: 100; }
+        .theme-switch { display: inline-block; height: 34px; position: relative; width: 60px; }
+        .theme-switch input { display:none; }
+        .slider { background-color: var(--bg-surface); border: 1px solid var(--border-color); bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: .4s; border-radius: 34px; }
+        .slider:before { background-color: var(--text-secondary); bottom: 4px; content: ""; height: 26px; left: 4px; position: absolute; transition: .4s; width: 26px; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--primary); }
+        input:checked + .slider:before { transform: translateX(26px); }
+        .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 1rem; text-align: center; }
+        .material-symbols-outlined { font-size: 40px; color: var(--text-secondary); transition: color var(--transition-speed); }
+        .modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 200; display: none; align-items: center; justify-content: center; }
+        .modal-content { max-width: 400px; width: 90%; }
+        .modal-buttons { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; }
+        .swatch-container { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .swatch { width: 100px; height: 100px; border-radius: var(--border-radius-medium); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-weight: bold; color: white; padding: 0.5rem; font-family: var(--font-header); border: 1px solid var(--border-color); }
+        .swatch span { font-family: var(--font-body); font-weight: 400; font-size: 0.8rem; margin-top: 5px; }
+        /* Nuevos Componentes */
+        .progress-bar { width: 100%; background-color: var(--bg-surface); border-radius: var(--border-radius-medium); padding: 3px; border: 1px solid var(--border-color); }
+        .progress-bar-inner { height: 20px; background-color: var(--success); border-radius: 5px; width: 75%; text-align: center; color: #121212; font-family: var(--font-header); }
+        .list-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem; border-bottom: 1px solid var(--border-color); }
+        .list-item .material-symbols-outlined { font-size: 24px; }
+        .segmented-control { display: flex; border: 1px solid var(--border-color); border-radius: var(--border-radius-medium); overflow: hidden; }
+        .segmented-control button { flex: 1; background: transparent; border: none; padding: 0.75rem; color: var(--text-secondary); font-family: var(--font-header); cursor: pointer; }
+        .segmented-control button.active { background: var(--primary); color: #121212; }
+    </style>
+</head>
+<body data-theme='dark'>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch"><input type="checkbox" id="theme-checkbox"><span class="slider"></span></label>
+    </div>
+    <div class="container">
+        <h1>Guía de Estilo Final</h1>
+        <p class="secondary-text">Guía interactiva con descripciones. Haz clic en el interruptor de arriba a la derecha para cambiar de tema.</p>
+        
+        <hr>
+        <div class="section">
+            <h2>Iconografía (Ampliada)</h2>
+            <p class="secondary-text">Una selección más amplia de los iconos que usaremos.</p>
+            <div class="icon-grid card">
+                <div><span class="material-symbols-outlined">settings</span><span>Ajustes</span></div>
+                <div><span class="material-symbols-outlined">add_circle</span><span>Añadir</span></div>
+                <div><span class="material-symbols-outlined">delete</span><span>Borrar</span></div>
+                <div><span class="material-symbols-outlined">edit</span><span>Editar</span></div>
+                <div><span class="material-symbols-outlined">groups</span><span>Grupos</span></div>
+                <div><span class="material-symbols-outlined">savings</span><span>Ahorros</span></div>
+                <div><span class="material-symbols-outlined">pie_chart</span><span>Gráficas</span></div>
+                <div><span class="material-symbols-outlined">logout</span><span>Salir</span></div>
+                <div><span class="material-symbols-outlined">receipt_long</span><span>Gasto</span></div>
+                <div><span class="material-symbols-outlined">notifications</span><span>Alertas</span></div>
+                <div><span class="material-symbols-outlined">fact_check</span><span>Revisar</span></div>
+                <div><span class="material-symbols-outlined">autorenew</span><span>Recurrente</span></div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="section">
+            <h2>Nuevos Componentes de UI</h2>
+            <div class="grid">
+                <div>
+                    <h3>Barras de Progreso</h3>
+                    <p class="secondary-text">Para Presupuestos y Metas de Ahorro.</p>
+                    <div class="progress-bar"><div class="progress-bar-inner">75%</div></div>
+                </div>
+                <div>
+                    <h3>Controles Segmentados</h3>
+                    <p class="secondary-text">Para selección de opciones.</p>
+                    <div class="segmented-control">
+                        <button class="active">Igual</button><button>%</button><button>$</button>
+                    </div>
+                </div>
+            </div>
+            <h3 style="margin-top: 2rem;">Listas Estilizadas</h3>
+            <p class="secondary-text">Para mostrar transacciones, miembros, etc.</p>
+            <div class="card">
+                <div class="list-item"><span class="material-symbols-outlined" style="color: var(--danger)">arrow_upward</span><span>Gasto Supermercado</span><span style="margin-left: auto; font-family: var(--font-header);">$85.00</span></div>
+                <div class="list-item"><span class="material-symbols-outlined" style="color: var(--success)">arrow_downward</span><span>Aportación de Ana</span><span style="margin-left: auto; font-family: var(--font-header);">$100.00</span></div>
+            </div>
+        </div>
+
+        <!-- Aquí empiezan las secciones que ya estaban -->
+        <hr>
+        <div class="section">
+            <h2>Paleta de Colores</h2>
+            <p class="secondary-text">Colores principales que definen la identidad de la aplicación.</p>
+            <div class="swatch-container">
+                <div class="swatch" style="background-color: var(--primary); color: #121212;">Primario<span>#BB86FC</span></div>
+                <div class="swatch" style="background-color: var(--success);">Éxito<span>#4CAF50</span></div>
+                <div class="swatch" style="background-color: var(--danger);">Peligro<span>#D50000</span></div>
+                <div class="swatch" style="background-color: var(--bg-surface); color: var(--text-secondary);">Superficie<span>var(--bg-surface)</span></div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="section">
+            <h2>Tipografía</h2>
+            <p class="secondary-text">La tipografía se elige para maximizar la claridad y mantener la personalidad de la marca.</p>
+            <h1>H1: Título Principal (Poppins)</h1>
+            <p>Párrafo de texto normal (Open Sans).</p>
+        </div>
+
+        <hr>
+        <div class="section">
+            <h2>Componentes Interactivos</h2>
+            <div class="grid">
+                <div>
+                    <h3>Botones</h3>
+                    <p class="secondary-text">Para acciones principales (relleno) y secundarias (borde).</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="button button-primary">Primario</button>
+                        <button class="button button-secondary">Secundario</button>
+                    </div>
+                </div>
+                <div>
+                    <h3>Formularios</h3>
+                    <p class="secondary-text">Para la entrada de datos del usuario.</p>
+                    <div class="form-group">
+                        <label for="example">Campo de Texto</label>
+                        <input type="text" id="example" placeholder="Escribe aquí...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="section">
+            <h2>Feedback al Usuario</h2>
+            <p class="secondary-text">Es crucial comunicar el resultado de las acciones.</p>
+            <div class="alert alert-success"><strong>Éxito:</strong> Tu operación se ha completado.</div>
+            <div class="alert alert-danger"><strong>Error:</strong> No se pudo guardar la información.</div>
+            <button class="button button-primary" id="show-modal-btn" style="margin-top: 1rem;">Mostrar Pop-up</button>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="my-modal">
+        <div class="modal-content">
+            <div class="card">
+                <h3>Confirmación Requerida</h3>
+                <p class="secondary-text">Para acciones críticas. ¿Estás seguro?</p>
+                <div class="modal-buttons">
+                    <button class="button button-secondary" id="cancel-btn">Cancelar</button>
+                    <button class="button button-primary" style="background-color: var(--danger);">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const checkbox = document.getElementById('theme-checkbox');
+        if(checkbox) checkbox.addEventListener('change', () => { document.body.setAttribute('data-theme', checkbox.checked ? 'light' : 'dark'); });
+        const modal = document.getElementById('my-modal');
+        const showBtn = document.getElementById('show-modal-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        if(showBtn) showBtn.addEventListener('click', () => { modal.style.display = 'flex'; });
+        if(cancelBtn) cancelBtn.addEventListener('click', () => { modal.style.display = 'none'; });
+        window.addEventListener('click', (event) => { if (event.target == modal) { modal.style.display = 'none'; } });
+    </script>
+</body>
+</html>

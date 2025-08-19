@@ -1,0 +1,48 @@
+/* Importar Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@700&display=swap');
+
+/* Definición de Variables de Diseño (Design Tokens) */
+:root {
+    --primary: #BB86FC;
+    --success: #4CAF50;
+    --danger: #D50000;
+    --warning: #FFC107;
+    --border-radius-medium: 8px;
+    --transition-speed: 0.2s ease;
+    --font-header: 'Poppins', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Tema Oscuro (Por defecto) */
+body[data-theme='dark'] {
+    --bg-primary: #121212;
+    --bg-surface: #1E1E1E;
+    --text-primary: #F0F0F0;
+    --text-secondary: #B3B3B3;
+    --shadow-color: rgba(0,0,0,0.3);
+    --border-color: transparent;
+}
+
+/* Tema Claro */
+body[data-theme='light'] {
+    --bg-primary: #FFFFFF;
+    --bg-surface: #FFFFFF;
+    --text-primary: #121212;
+    --text-secondary: #6c757d;
+    --shadow-color: rgba(0,0,0,0.1);
+    --border-color: #E0E0E0;
+}
+
+/* Estilos Globales Base */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    margin: 0;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
