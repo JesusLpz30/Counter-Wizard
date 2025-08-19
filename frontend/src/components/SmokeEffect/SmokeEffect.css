@@ -1,0 +1,10 @@
+.smoke-effect {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: -1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}

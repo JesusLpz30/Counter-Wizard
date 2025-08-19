@@ -1,0 +1,200 @@
+.auth-container {
+  width: 100%;
+}
+
+.auth-title {
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-shadow: 0 0 20px var(--magical-glow);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.auth-input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--shadow-color);
+}
+
+.auth-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.auth-button {
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--primary);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.auth-button:hover::before {
+  left: 100%;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.auth-button:disabled {
+  background-color: var(--text-secondary);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Efecto mágico para los botones */
+.auth-button:not(:disabled)::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 6px;
+  background: radial-gradient(
+    ellipse at center,
+    var(--magical-glow) 0%,
+    transparent 70%
+  );
+  filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.auth-button:not(:disabled):hover::after {
+  opacity: 1;
+}
+
+.google-button {
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 auto 1.5rem auto;
+  width: 100%;
+  padding: 0.75rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+.google-button:hover {
+  border-color: var(--primary);
+  background-color: var(--bg-surface);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.google-button img {
+  margin-right: 0.5rem;
+}
+
+.google-button span {
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--text-secondary);
+  margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.divider span {
+  padding: 0 1rem;
+}
+
+.error-message {
+  color: var(--danger);
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  background-color: rgba(213, 0, 0, 0.1);
+  padding: 0.75rem;
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.auth-link {
+  color: var(--primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  transition: all 0.3s ease;
+}
+
+.auth-link:hover {
+  color: var(--primary-hover);
+  text-shadow: 0 0 8px var(--shadow-color);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

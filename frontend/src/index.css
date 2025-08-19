@@ -1,48 +1,131 @@
 /* Importar Fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap');
 
 /* Definición de Variables de Diseño (Design Tokens) */
 :root {
-    --primary: #BB86FC;
-    --success: #4CAF50;
-    --danger: #D50000;
-    --warning: #FFC107;
-    --border-radius-medium: 8px;
-    --transition-speed: 0.2s ease;
-    --font-header: 'Poppins', sans-serif;
-    --font-body: 'Open Sans', sans-serif;
+  --primary: #BB86FC;
+  --primary-hover: #9C27B0;
+  --success: #4CAF50;
+  --danger: #D50000;
+  --warning: #FFC107;
+  --border-radius-small: 8px;
+  --border-radius-medium: 12px;
+  --border-radius-large: 24px;
+  --transition-speed: 0.3s ease;
+  --font-header: 'Poppins', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
 }
 
 /* Tema Oscuro (Por defecto) */
 body[data-theme='dark'] {
-    --bg-primary: #121212;
-    --bg-surface: #1E1E1E;
-    --text-primary: #F0F0F0;
-    --text-secondary: #B3B3B3;
-    --shadow-color: rgba(0,0,0,0.3);
-    --border-color: transparent;
+  --bg-primary: #121212;
+  --bg-surface: rgba(255, 255, 255, 0.05);
+  --text-primary: #F0F0F0;
+  --text-secondary: #B3B3B3;
+  --shadow-color: rgba(187, 134, 252, 0.2);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(30, 30, 30, 0.95);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  /* Efectos mágicos */
+  --magical-glow: rgba(76, 175, 80, 0.3);
+  --success-glow: rgba(76, 175, 80, 0.4);
+  --primary-glow: rgba(187, 134, 252, 0.3);
+  /* Efecto de humo */
+  --smoke-color-start: rgba(76, 175, 80, 0.4);
+  --smoke-color-end: rgba(76, 175, 80, 0);
 }
 
 /* Tema Claro */
 body[data-theme='light'] {
-    --bg-primary: #FFFFFF;
-    --bg-surface: #FFFFFF;
-    --text-primary: #121212;
-    --text-secondary: #6c757d;
-    --shadow-color: rgba(0,0,0,0.1);
-    --border-color: #E0E0E0;
+  --bg-primary: #F8F9FA;
+  --bg-surface: #FFFFFF;
+  --text-primary: #121212;
+  --text-secondary: #6c757d;
+  --shadow-color: rgba(187, 134, 252, 0.15);
+  --border-color: rgba(187, 134, 252, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --input-bg: rgba(0, 0, 0, 0.02);
+  /* Efectos mágicos */
+  --magical-glow: rgba(76, 175, 80, 0.25);
+  --success-glow: rgba(76, 175, 80, 0.35);
+  --primary-glow: rgba(187, 134, 252, 0.25);
+  /* Efecto de humo */
+  --smoke-color-start: rgba(76, 175, 80, 0.35);
+  --smoke-color-end: rgba(76, 175, 80, 0);
 }
 
 /* Estilos Globales Base */
+html {
+  height: 100%;
+  font-size: 16px;
+}
+
 body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    margin: 0;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-    transition: background-color var(--transition-speed), color var(--transition-speed);
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  transition: background-color var(--transition-speed),
+              color var(--transition-speed),
+              border-color var(--transition-speed),
+              box-shadow var(--transition-speed);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Helpers para animaciones */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+.animate-shine {
+  animation: shine 3s linear infinite;
+}
+
+/* Animaciones Globales */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
 }

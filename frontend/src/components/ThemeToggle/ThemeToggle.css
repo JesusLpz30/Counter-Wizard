@@ -1,0 +1,49 @@
+.theme-toggle-switch {
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+  position: relative;
+}
+
+.theme-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-surface);
+  transition: all 0.3s ease;
+  border-radius: 24px;
+  border: 2px solid var(--primary);
+}
+
+.slider::before {
+  content: '';
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+.slider:hover {
+  border-color: color-mix(in srgb, var(--primary) 80%, white);
+}
+
+.slider:hover::before {
+  background-color: color-mix(in srgb, var(--primary) 80%, white);
+}
